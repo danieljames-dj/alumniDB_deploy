@@ -1,0 +1,35 @@
+create table users (
+uID                 varchar(10),
+gEmail              varchar(30),
+gName               varchar(30),
+branch              varchar(30),
+name                varchar(30),
+name_alt            varchar(30),
+email               varchar(30),
+contact             varchar(12),
+address_old         varchar(200),
+address_new         varchar(200),
+location_current    varchar(30),
+intro               varchar(500),
+old_face            varchar(10),
+new_face            varchar(10),
+familyPic1          varchar(10),
+familyPic2          varchar(10),
+status              int(11)
+);
+
+insert into users (name, branch) values ('Name A', 'Mechanical');
+insert into users (name, branch) values ('Name B', 'Mechanical');
+insert into users (name, branch) values ('Name C', 'Mechanical');
+insert into users (name, branch) values ('Name D', 'Mechanical');
+insert into users (name, branch) values ('Name E', 'Mechanical');
+insert into users (name, branch) values ('Name F', 'Electrical');
+insert into users (name, branch) values ('Name G', 'Electrical');
+insert into users (name, branch) values ('Name H', 'Electrical');
+insert into users (name, branch) values ('Name I', 'Electrical');
+insert into users (name, branch) values ('Name J', 'Electrical');
+insert into users (name, branch) values ('Name K', 'Civil');
+insert into users (name, branch) values ('Name L', 'Civil');
+insert into users (name, branch) values ('Name M', 'Civil');
+insert into users (name, branch) values ('Name N', 'Civil');
+insert into users (name, branch) values ('Name O', 'Civil');
