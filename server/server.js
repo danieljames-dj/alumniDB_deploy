@@ -373,13 +373,54 @@ app.post('/getRegdList',function(req,res) { // UNUSED
 });
 
 app.post('/reset',function(req,res) { // UNUSED
-	console.log(req.body.query);
-	con.query("delete from users;",function(err,rows){});
-	con.query(req.body.query,function(err,rows){
-		console.log(err);
-		console.log(rows);
-	});
-	con.query("update users set status = 0;",function(err,rows){});
+	console.log(req.body);
+	var count = req.body.length - 1;
+	var deleteFolderRecursive = function(path) {
+	  if( fs.existsSync(path) ) {
+	    fs.readdirSync(path).forEach(function(file,index){
+	      var curPath = path + "/" + file;
+	      if(fs.lstatSync(curPath).isDirectory()) { // recurse
+	        deleteFolderRecursive(curPath);
+	      } else { // delete file
+	        fs.unlinkSync(curPath);
+	      }
+	    });
+	    fs.rmdirSync(path);
+	  }
+	};
+	// deleteFolderRecursive("./pics");
+	if (!fs.existsSync("./pics/")) {
+		fs.mkdirSync("./pics/");
+	}
+	writeStream = fs.createWriteStream("./pics/count");
+	writeStream.write(count.toString());
+	writeStream.end();
+	// con.query("delete from users;",function(err,rows){});
+	for (key in req.body) {
+		var obj = req.body[key];
+		if (obj != null) {
+			console.log(obj);
+			var old_face = 0;
+			if (obj.file) {
+				if (!fs.existsSync("./pics/" + obj.uID)) {
+					fs.mkdirSync("./pics/" + obj.uID);
+				}
+				writeStream = fs.createWriteStream("./pics/" + obj.uID + "/1");
+				writeStream.write(obj.file);
+				writeStream.end();
+				old_face = 1;
+			}
+			con.query("insert into users (uID, branch, name, old_face, status) values ('" + obj.uID + "','" + obj.branch + "','" + obj.name + "','" + old_face + "'," + 0 + ")",function(err,rows) {
+				console.log(err);
+				console.log(rows);
+			});
+		}
+	}
+	// con.query(req.body.query,function(err,rows){
+	// 	console.log(err);
+	// 	console.log(rows);
+	// });
+	// con.query("update users set status = 0;",function(err,rows){});
 });
 
 app.post('/approve',function(req,res) { // UNUSED
