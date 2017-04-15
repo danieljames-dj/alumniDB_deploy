@@ -120,6 +120,11 @@ app.post('/register',function(req,res) {
 				var count = parseInt(data);
 				if (req.body.name != 'Select Name') {
 					count++;
+					console.log(count);
+					console.log(count.toString());
+					writeStream = fs.createWriteStream("./pics/count");
+					writeStream.write(count.toString());
+					writeStream.end();
 					if (!fs.existsSync("./pics/" + count)) {
 						fs.mkdirSync("./pics/" + count);
 					}
@@ -181,6 +186,34 @@ app.post('/getBranchName',function(req,res) {
 				});
 			}
 		});
+	});
+});
+
+app.post('/getPic',function(req,res) {
+	var curUser = null;
+	console.log(req.body);
+	con.query('select uID from users where branch=\''+req.body.branch+'\' and name=\''+req.body.name+'\'',function(err,rows){
+		console.log(rows);
+		if (!err && rows.length > 0) {
+			curUser = rows[0];
+			console.log(rows[0]);
+			fs.readFile("./pics/" + rows[0].uID + "/1", 'utf8', function(err, data) {
+				if (!err) {
+					res.json({
+						success: true,
+						details: data
+					});
+				} else {
+					res.json({
+						success: false
+					});
+				}
+			});
+		} else {
+			res.json({
+				success: false
+			});
+		}
 	});
 });
 

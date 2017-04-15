@@ -18,18 +18,18 @@ familyPic2          varchar(10),
 status              int(11)
 );
 
-insert into users (name, branch) values ('Name A', 'Mechanical');
-insert into users (name, branch) values ('Name B', 'Mechanical');
-insert into users (name, branch) values ('Name C', 'Mechanical');
-insert into users (name, branch) values ('Name D', 'Mechanical');
-insert into users (name, branch) values ('Name E', 'Mechanical');
-insert into users (name, branch) values ('Name F', 'Electrical');
-insert into users (name, branch) values ('Name G', 'Electrical');
-insert into users (name, branch) values ('Name H', 'Electrical');
-insert into users (name, branch) values ('Name I', 'Electrical');
-insert into users (name, branch) values ('Name J', 'Electrical');
-insert into users (name, branch) values ('Name K', 'Civil');
-insert into users (name, branch) values ('Name L', 'Civil');
-insert into users (name, branch) values ('Name M', 'Civil');
-insert into users (name, branch) values ('Name N', 'Civil');
-insert into users (name, branch) values ('Name O', 'Civil');
+insert into users (uID, name, branch) values (1, 'Name A', 'Mechanical');
+insert into users (uID, name, branch) values (2, 'Name B', 'Mechanical');
+insert into users (uID, name, branch) values (3, 'Name C', 'Mechanical');
+insert into users (uID, name, branch) values (4, 'Name D', 'Mechanical');
+insert into users (uID, name, branch) values (5, 'Name E', 'Mechanical');
+insert into users (uID, name, branch) values (6, 'Name F', 'Electrical');
+insert into users (uID, name, branch) values (7, 'Name G', 'Electrical');
+insert into users (uID, name, branch) values (8, 'Name H', 'Electrical');
+insert into users (uID, name, branch) values (9, 'Name I', 'Electrical');
+insert into users (uID, name, branch) values (10, 'Name J', 'Electrical');
+insert into users (uID, name, branch) values (11, 'Name K', 'Civil');
+insert into users (uID, name, branch) values (12, 'Name L', 'Civil');
+insert into users (uID, name, branch) values (13, 'Name M', 'Civil');
+insert into users (uID, name, branch) values (14, 'Name N', 'Civil');
+insert into users (uID, name, branch) values (15, 'Name O', 'Civil');
